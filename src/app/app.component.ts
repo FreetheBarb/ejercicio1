@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ejercicio1';
+  viewDate: Date = new Date();
+  events = [];
 }
