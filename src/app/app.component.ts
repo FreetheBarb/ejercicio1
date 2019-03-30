@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ejercicio1';
+  view: string = 'month';
   viewDate: Date = new Date();
   events = [];
 }
