@@ -4,22 +4,18 @@
 <button mwlCalendarToday  [(viewDate)]="viewDate">  Today  </button>
 <button mwlCalendarNextView [(viewDate)]="viewDate" [view]="view">  Next  </button> 
 
+<p>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</p>
 
 <div [ngSwitch]="view">
       <mwl-calendar-month-view
+      
         *ngSwitchCase="'month'"
         [viewDate]="viewDate"
         [events]="events"
         (dayClicked)="viewDate = $event.day.date; view = 'day'"
       >
       </mwl-calendar-month-view>
-     <mwl-calendar-week-view
-    *ngSwitchCase="'week'"
-    [viewDate]="viewDate"
-    [events]="events"
-    (dayHeaderClicked)="viewDate = $event.day.date; view = 'day'"
-  >
-  </mwl-calendar-week-view>
+  
 </div>
 
 
