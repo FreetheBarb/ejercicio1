@@ -1,4 +1,6 @@
-<app-calendario></app-calendario>
+<li *ngFor="let feriado of feriadosObservable | async" >
+  {{feriado.id}}
+</li>
 
 <button mwlCalendarPreviousView [(viewDate)]="viewDate" [view]="view">  Previous  </button>
 <button mwlCalendarToday  [(viewDate)]="viewDate">  Today  </button>
@@ -17,6 +19,7 @@
       </mwl-calendar-month-view>
   
 </div>
+
 
 
 <router-outlet></router-outlet>
