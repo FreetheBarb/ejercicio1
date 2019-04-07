@@ -18,8 +18,7 @@ export class AppComponent {
   title = 'ejercicio1';
   view: string = 'month';
   viewDate: Date = new Date();
-  
-  feriados : Feriado[];
+  feriados : Feriado[] = [];
   diaPrueba : Date = new Date();
  
 
@@ -41,18 +40,24 @@ export class AppComponent {
     this.evento.setStart(this.diaPrueba);
     this.evento.setTitle('a');
     this.events.push(this.evento);
-    
-    this.feriados.forEach(this.ponerLosFeriados);
+    this.ponerLosFeriados();
   }
 
   getFeriados(): void {
     
     this.feriadosService.getFeriados()
-        .subscribe (feriados => this.feriados = feriados)
+        .subscribe ((data : Feriado []) => {console.log(data);
+          this.feriados=data;
+          console.log(this.feriados);
+        });
+        
   }
 
   ponerLosFeriados(): void{
-    this.events.push(this.evento)
+    for (let index = 0; index < this.feriados.length; index++) {
+      this.events.push(this.evento);
+      
+    }
   }
 
 

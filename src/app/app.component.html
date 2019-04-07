@@ -1,6 +1,4 @@
-<li *ngFor="let feriado of feriadosObservable | async" >
-  {{feriado.id}}
-</li>
+
 
 <button mwlCalendarPreviousView [(viewDate)]="viewDate" [view]="view">  Previous  </button>
 <button mwlCalendarToday  [(viewDate)]="viewDate">  Today  </button>
@@ -10,11 +8,9 @@
 
 <div [ngSwitch]="view">
       <mwl-calendar-month-view
-      
         *ngSwitchCase="'month'"
         [viewDate]="viewDate"
         [events]="events"
-        (dayClicked)="viewDate = $event.day.date; view = 'day'"
       >
       </mwl-calendar-month-view>
   
