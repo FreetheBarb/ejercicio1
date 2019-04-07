@@ -20,14 +20,7 @@ export class AppComponent {
   viewDate: Date = new Date();
   feriados : Feriado[] = [];
   diaPrueba : Date = new Date();
- 
-
-  events: CalendarEvent[] = [
-    {
-      title: 'An event',
-      start: this.diaPrueba,
-    }
-  ];
+  events: CalendarEvent[] = [];
 
 
   constructor(private feriadosService: FeriadosService){
@@ -36,29 +29,21 @@ export class AppComponent {
   
   ngOnInit() {
     this.getFeriados();
-    //this.diaPrueba.setFullYear(2019,3,1);
-    this.evento.setStart(this.diaPrueba);
-    this.evento.setTitle('a');
-    this.events.push(this.evento);
-    this.ponerLosFeriados();
   }
 
   getFeriados(): void {
-    
     this.feriadosService.getFeriados()
-        .subscribe ((data : Feriado []) => {console.log(data);
-          this.feriados=data;
+    
+        .subscribe ((data : Feriado []) => {this.feriados=data;
           console.log(this.feriados);
+          for (let index = 0; index < this.feriados.length; index++) {
+            this.diaPrueba.setFullYear(2019, this.feriados[index].mes - 1, this.feriados[index].dia);
+            this.evento.setStart(this.diaPrueba);
+            this.evento.setTitle(this.feriados[index].motivo);
+            this.events.push(this.evento);
+          }
+          console.log(this.events);
         });
-        
   }
-
-  ponerLosFeriados(): void{
-    for (let index = 0; index < this.feriados.length; index++) {
-      this.events.push(this.evento);
-      
-    }
-  }
-
 
 }
