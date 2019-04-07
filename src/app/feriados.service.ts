@@ -15,22 +15,6 @@ export class FeriadosService {
 
   getFeriados(): Observable<Feriado[]> {
     return this.http.get<Feriado[]>(this.feriadosUrl)
-/*    
-      .pipe(
-      catchError(this.handleError<Feriado[]>('getHeroes', []))
-    );
-*/  
 }
-
-/*
-private handleError<T> (operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
-
-    console.error(error); 
-
-    return of(result as T);
-  };
-}
-*/
 
 }

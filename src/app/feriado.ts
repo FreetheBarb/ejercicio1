@@ -1,8 +1,10 @@
-export class Feriado {
-    motivo : String;
-    tipo : String;
-    dia : number;
-    mes : number;
-    id : String;
-    original : String;
+export interface Feriado {
+    motivo?: string;
+    tipo?: string;
+    dia?: number;
+    mes?: number;
+    id?: string;
+    original?: string;
+
+     
 }
