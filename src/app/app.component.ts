@@ -33,7 +33,25 @@ export class AppComponent {
 
   getFeriados(): void {
     this.feriadosService.getFeriados()
-    
+        .subscribe ((data : Feriado []) => {this.feriados=data;
+          console.log(this.feriados);
+          for (let index = 0; index < this.feriados.length; index++) {
+              var evento = new Evento();
+              var dia : Date = new Date();
+            dia.setFullYear(2019, this.feriados[index].mes - 1, this.feriados[index].dia);
+            evento.setStart(dia);
+            evento.setTitle(this.feriados[index].motivo);
+            this.events.push(evento);
+          }
+          console.log(this.events);
+        });
+  }
+}
+
+/*
+getFeriados(): void {
+    console.log("hola");
+    this.feriadosService.getFeriados()
         .subscribe ((data : Feriado []) => {this.feriados=data;
           console.log(this.feriados);
           for (let index = 0; index < this.feriados.length; index++) {
@@ -45,5 +63,4 @@ export class AppComponent {
           console.log(this.events);
         });
   }
-
-}
+*/
