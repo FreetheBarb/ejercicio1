@@ -19,7 +19,6 @@ export class AppComponent {
   view: string = 'month';
   viewDate: Date = new Date();
   feriados : Feriado[] = [];
-  diaPrueba : Date = new Date();
   events: CalendarEvent[] = [];
 
 
